@@ -1,0 +1,26 @@
+.orderListItem {
+    color: #FFFFFF;
+    background: #055F5B;
+    border-radius: 9999px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    position: relative;
+}
+
+.orderListItem::after {
+    content: "";
+    /* background: #055F5B; */
+    border: 1px dotted #055F5B;
+    top: 23px;
+    left: 10.5px;
+    width: 0px;
+    height: 45px;
+    position: absolute;
+}
+
+.orderListItem.orderListItemFullfilled::after {
+    border: 1px solid #055F5B;
+}

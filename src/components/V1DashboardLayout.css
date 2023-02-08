@@ -1,0 +1,63 @@
+.dashboard-menu-item {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    position: relative;
+    color: #FFFFFF;
+    margin: 25px 0;
+    transition: all 0.3s ease;
+    padding: 12px 8px;
+}
+
+.dashboard-menu-item.active {
+    background: #FFFFFF;
+    color: #055F5B;
+}
+
+.dashboard-menu-item.active .top-border,
+.dashboard-menu-item.active .bottom-border {
+    transition: all 0.3s ease;
+}
+
+.dashboard-menu-item.active .top-border::before,
+.dashboard-menu-item.active .bottom-border::before,
+.dashboard-menu-item.active .top-border::after,
+.dashboard-menu-item.active .bottom-border::after {
+    content: "";
+    width: 30px;
+    height: 20px;
+    position: absolute;
+}
+
+.dashboard-menu-item.active .top-border::before,
+.dashboard-menu-item.active .bottom-border::before {
+    background: #055F5B;
+    right: 0px;
+    z-index: 999;
+}
+
+.dashboard-menu-item.active .top-border::before {
+    top: -20px;
+    border-bottom-right-radius: 20px;
+}
+
+.dashboard-menu-item.active .bottom-border::before {
+    bottom: -20px;
+    border-top-right-radius: 20px;
+}
+
+.dashboard-menu-item.active .top-border::after,
+.dashboard-menu-item.active .bottom-border::after {
+    background: white;
+    right: -10px;
+    border-radius: 20px;
+    z-index: 99;
+}
+
+.dashboard-menu-item.active .top-border::after {
+    top: -16px;
+}
+
+.dashboard-menu-item.active .bottom-border::after {
+    bottom: -16px;
+}
