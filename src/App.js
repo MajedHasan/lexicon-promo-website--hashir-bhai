@@ -14,6 +14,8 @@ import V1Dashboard from './pages/v1/V1Dashboard';
 import V1NewOrders from "./pages/v1/V1NewOrders"
 import V1Settings from './pages/v1/V1Settings';
 import V1Accounts from './pages/v1/V1Accounts';
+import V1CurrentOrders from './pages/v1/V1CurrentOrders';
+import V1Collaterals from './pages/v1/V1Collaterals';
 
 
 function App() {
@@ -59,6 +61,14 @@ function App() {
         {
           path: "/v1/dashboard/neworders",
           element: <V1NewOrders />
+        },
+        {
+          path: "/v1/dashboard/currentorders",
+          element: <V1CurrentOrders />
+        },
+        {
+          path: "/v1/dashboard/collaterals",
+          element: <V1Collaterals />
         },
         {
           path: "/v1/dashboard/accounts",

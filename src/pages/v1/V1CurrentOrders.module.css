@@ -1,0 +1,110 @@
+.orderProgress {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    position: relative;
+}
+
+.orderProgress::before {
+    content: "";
+    width: 70%;
+    height: 0.5px;
+    border: 1px dashed #055F5B;
+    top: 28%;
+    left: 15%;
+    position: absolute;
+    z-index: 9;
+}
+
+.orderProgress25::after,
+.orderProgress50::after,
+.orderProgress75::after,
+.orderProgress100::after {
+    content: "";
+    height: 0.5px;
+    border: 1px solid #055F5B;
+    top: 28%;
+    left: 15%;
+    position: absolute;
+    z-index: 9;
+}
+
+.orderProgress25::after {
+    width: 25%;
+}
+
+.orderProgress50::after {
+    width: 50%;
+}
+
+.orderProgress75::after {
+    width: 75%;
+}
+
+.orderProgress100::after {
+    width: 100%;
+}
+
+.orderProgress>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.orderProgress>div>div {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #FFF7E6;
+    border: 1px solid #055F5B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 999;
+}
+
+.orderProgress>div>div>span {
+    color: #055F5B;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.orderProgress>div>p {
+    font-weight: 400;
+}
+
+.orderProgressActive>div {
+    background: #FFD584 !important;
+}
+
+.orderProgressActive>div>span {
+    color: #000000 !important;
+}
+
+.orderProgressActive>p {
+    font-weight: 700 !important;
+}
+
+
+.showShare {
+    text-align: center;
+}
+
+.showShare>div {
+    display: none;
+}
+
+.showShare:hover>div {
+    display: initial;
+}
+
+.showMeta>div:nth-child(2) {
+    display: none;
+    z-index: 999;
+}
+
+.showMeta:hover>div:nth-child(2) {
+    display: grid;
+}

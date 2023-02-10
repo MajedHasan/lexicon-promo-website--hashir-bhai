@@ -141,7 +141,7 @@ const V1Accounts = () => {
                         <div >
                         </div>
                         <div>
-                            <Link to="" className="w-full flex justify-center items-center rounded-lg bg-[#FFD584] h-full text-black font-semibold">Add New Location</Link>
+                            <button className="w-full flex justify-center items-center rounded-lg bg-[#FFD584] h-full text-black font-semibold" onClick={() => setSingleLocation({ status: "add" })}>Add New Location</button>
                         </div>
                     </div>
                     <div className="bg-[#FFFBF3] h-full max-h-[570px] rounded-lg">
