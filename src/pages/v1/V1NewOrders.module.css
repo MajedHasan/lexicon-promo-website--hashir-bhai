@@ -4,11 +4,44 @@
     position: relative;
 }
 
-.orderProgress::after {
+.orderProgress::before {
     content: "";
     width: 70%;
     height: 0.5px;
     border: 1px dashed #055F5B;
+    top: 38%;
+    left: 15%;
+    position: absolute;
+    z-index: 9;
+}
+
+.orderProgress20::after {
+    content: "";
+    width: 20%;
+    height: 0.5px;
+    border: 1px solid #055F5B;
+    top: 38%;
+    left: 15%;
+    position: absolute;
+    z-index: 9;
+}
+
+.orderProgress25::after {
+    content: "";
+    width: 30%;
+    height: 0.5px;
+    border: 1px solid #055F5B;
+    top: 38%;
+    left: 15%;
+    position: absolute;
+    z-index: 9;
+}
+
+.orderProgress50::after {
+    content: "";
+    width: 50%;
+    height: 0.5px;
+    border: 1px solid #055F5B;
     top: 38%;
     left: 15%;
     position: absolute;

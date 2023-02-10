@@ -14,15 +14,18 @@ import ecomPen5 from "../../assets/v1/dashboard/ecommerce-project-screen/pen-5.p
 import ecomPen6 from "../../assets/v1/dashboard/ecommerce-project-screen/pen-6.png"
 import ecomPen7 from "../../assets/v1/dashboard/ecommerce-project-screen/pen-7.png"
 import ecomPen8 from "../../assets/v1/dashboard/ecommerce-project-screen/pen-8.png"
+import catalog from "../../assets/v1/dashboard/catalog.png"
+import uploadLogo from "../../assets/v1/dashboard/new-order/upload-logo.png"
 
 import { IoMdCheckmarkCircle } from "react-icons/io"
-import { BsChevronDown, BsPlusLg, BsPencil, BsShare } from "react-icons/bs"
-import { AiOutlinePlus, AiOutlineMinus, AiOutlineEdit, AiOutlineWarning, AiFillStar, AiOutlineStar } from "react-icons/ai"
+import { BsChevronDown, BsPlusLg, BsPencil, BsShare, BsChevronLeft } from "react-icons/bs"
+import { AiOutlinePlus, AiOutlineMinus, AiOutlineEdit, AiOutlineWarning, AiFillStar, AiOutlineStar, AiOutlineCamera } from "react-icons/ai"
 import { MdOutlineSimCardDownload, MdOutlineArrowBackIosNew } from "react-icons/md"
 import { FiTrash } from "react-icons/fi"
 import { FaTimes, FaRegEdit, FaSearchPlus } from "react-icons/fa"
 import { CgFolder } from "react-icons/cg"
 import { FcCheckmark } from "react-icons/fc"
+import { RxPencil2 } from "react-icons/rx"
 import { useState } from "react"
 import { toast } from "react-toastify"
 
@@ -581,14 +584,14 @@ const V1NewOrders = () => {
                 screen === "itemsDetails" && <>
                     <div className="grid grid-cols-2 gap-8 mt-4 mb-8">
                         <div>
-                            <div className={styles.orderProgress}>
+                            <div className={`${styles.orderProgress} ${styles.orderProgress25}`}>
                                 <div className={styles.orderProgressActive}>
                                     <div>
                                         <span>1</span>
                                     </div>
                                     <p>Product Selection</p>
                                 </div>
-                                <div>
+                                <div className={styles.orderProgressActive}>
                                     <div>
                                         <span>2</span>
                                     </div>
@@ -650,14 +653,14 @@ const V1NewOrders = () => {
                                                 <tr key={product?._id}>
                                                     <td className="bg-transparent">
                                                         <div className="flex items-start gap-3">
-                                                            <img src={product?.img} alt="" className="rounded-full w-[50px] h-[50px]" onClick={() => setScreen("ecomProjectScreen")} />
-                                                            <FaSearchPlus style={{ color: product?.nameColor }} />
+                                                            <img src={product?.img} alt="" className="rounded-full w-[50px] h-[50px] cursor-pointer" onClick={() => setScreen("ecomProjectScreen")} />
+                                                            <FaSearchPlus style={{ color: product?.nameColor }} className="cursor-pointer" onClick={() => setScreen("full view")} />
                                                         </div>
                                                     </td>
                                                     <td className={`bg-transparent font-bold relative ${styles.showMeta}`} style={{ color: product?.nameColor }}>
                                                         <div className="flex gap-4 items-center cursor-pointer">
                                                             <span className="flex items-end gap-1">{product?.name} <BsChevronDown /></span>
-                                                            <FaRegEdit />
+                                                            <FaRegEdit onClick={() => setScreen("editing")} />
                                                         </div>
                                                         <div className="absolute p-5 rounded-lg shadow-lg bg- top-14 left-0 grid grid-cols-2 gap-x-7 gap-y-3 bg-white text-black text-sm">
                                                             <span className="font-semibold">Processing: </span>
@@ -755,9 +758,11 @@ const V1NewOrders = () => {
             {
                 screen === "ecomProjectScreen" && <>
                     <div className="py-3 px-5 bg-[#055f5b1a] flex items-center justify-between">
-                        <div className="flex gap-2 items-center">
-                            <MdOutlineArrowBackIosNew />
-                            <span >Back</span>
+                        <div>
+                            <button className="flex gap-2 items-center" onClick={() => setScreen("itemsDetails")}>
+                                <MdOutlineArrowBackIosNew />
+                                <span >Back</span>
+                            </button>
                         </div>
                         <h2 className="text-md font-bold">Related Project</h2>
                         <div className="flex gap-2 items-center">
@@ -1008,6 +1013,215 @@ const V1NewOrders = () => {
                         </div>
                         <div>
                             <span className="text-sm text-[#858585]">8 of 35 items</span>
+                        </div>
+                    </div>
+                </>
+            }
+            {
+                screen === "full view" && <>
+                    <div>
+                        <div className="py-3 px-4 bg-[#055F5B1A] grid grid-cols-2">
+                            <div className="">
+                                <button className="flex items-center gap-2 cursor-pointer" onClick={() => setScreen("itemsDetails")}>
+                                    <BsChevronLeft />
+                                    <span>Back</span>
+                                </button>
+                            </div>
+                            <div>
+                                <h3 className="font-semibold text-lg">Product Full View</h3>
+                            </div>
+                        </div>
+                        <div className="flex gap-8 mt-3">
+                            <div className="w-5/12 shadow-lg rounded-lg p-6">
+                                <h2 className="text-xl font-semibold mb-4">Print Products</h2>
+                                <div className="rounded-lg">
+                                    <img src={catalog} alt="" className="rounded-t-xl" />
+                                    <div className="grid grid-cols-2">
+                                        <img src={catalog} alt="" className="w-auto rounded-bl-xl" />
+                                        <img src={catalog} alt="" className="w-auto rounded-br-xl" />
+                                    </div>
+                                </div>
+                                <div className="flex justify-center">
+                                    <button className="flex gap-3 text-md mt-4 items-center bg-[#FFD584] py-2 px-8 rounded">
+                                        <FaSearchPlus />
+                                        <span>Enlarge Image</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div className="w-7/12">
+                                <div className="bg-[#FFFBF3] p-6">
+                                    <div className="flex justify-between items-center mb-3">
+                                        <h3 className="text-md font-semibold">Product Details</h3>
+                                        <h3 className="text-md font-semibold">
+                                            <RxPencil2 className="text-2xl text-[#055F5B]" />
+                                        </h3>
+                                    </div>
+                                    <div className="flex justify-between items-center">
+                                        <p className="text-sm font-normal text-[#787878]">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishingrfcddo ell industries for previewing layouts.</p>
+                                    </div>
+                                </div>
+                                <div className="bg-[#FFFBF3] p-6 my-6">
+                                    <div className="flex justify-between items-center">
+                                        <h3 className="text-md font-semibold">Select Quantity </h3>
+                                        <div className="flex gap-4 items-center">
+                                            <button className="bg-[#FFD584] py-1 px-7">
+                                                <AiOutlineMinus className="text-lg" />
+                                            </button>
+                                            <span>900</span>
+                                            <button className="bg-[#FFD584] py-1 px-7">
+                                                <AiOutlinePlus className="text-lg" />
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="bg-[#FFFBF3] p-6">
+                                    <h2 className="text-md font-semibold">Changes Requested</h2>
+                                    <hr className="border-b-[1px] border-b-[#D9D9D9] my-5" />
+                                    <div className="flex justify-between items-center">
+                                        <div>
+                                            <p className="text-sm font-medium mb-3">Change of description</p>
+                                            <span className="text-sm text-[#7C7C7C]">2/12/23 , 04:67 PM</span>
+                                        </div>
+                                        <div>
+                                            <p className="text-sm font-medium mb-3">Attachments</p>
+                                            <div className="flex gap-2 items-center mb-3">
+                                                <span className="text-sm text-[#7C7C7C]">Image.jpg</span>
+                                            </div>
+                                            <span className="text-sm text-[#7C7C7C]">450 KB</span>
+                                        </div>
+                                    </div>
+                                    <div className="mt-5">
+                                        <h4 className="text-sm font-medium mb-4">Description</h4>
+                                        <p className="text-[#787878] text-sm">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries. We have change the description, kindly update it into the system.</p>
+                                    </div>
+                                    <div className="flex items-center gap-3 mt-4">
+                                        <span className="">
+                                            <input type="checkbox" className="checkbox" />
+                                        </span>
+                                        <span className="text-[#787878] text-sm">Lorem ipsum is placeholder text commonly used in the graphic, print.</span>
+                                    </div>
+                                    <div className="mt-5 flex gap-10 justify-center items-center">
+                                        <button className="text-[#055F5B] py-3 px-14 rounded-lg bg-[#055F5B1F] text-sm">Back</button>
+                                        <button className="text-[#FFFFFF] py-3 px-14 rounded-lg bg-[#055F5B] text-sm" onClick={() => {
+                                            setScreen("itemsDetails")
+                                            toast.success("Your request for the change have been submit to the admin. Thank You!")
+                                        }}>Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </>
+            }
+            {
+                screen === "editing" && <>
+                    <div>
+                        <div className="py-3 px-4 bg-[#055F5B1A] grid grid-cols-2">
+                            <div className="">
+                                <button className="flex items-center gap-2 cursor-pointer" onClick={() => setScreen("itemsDetails")}>
+                                    <BsChevronLeft />
+                                    <span>Back</span>
+                                </button>
+                            </div>
+                            <div>
+                                <h3 className="font-semibold text-lg">Editing</h3>
+                            </div>
+                        </div>
+                        <div className="flex gap-8 mt-4 mb-2">
+                            <div className="w-8/12">
+                                <div className={`${styles.orderProgress} ${styles.orderProgress20}`} style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}>
+                                    <div className={styles.orderProgressActive}>
+                                        <div>
+                                            <span>1</span>
+                                        </div>
+                                        <p>Product Selection</p>
+                                    </div>
+                                    <div className={styles.orderProgressActive}>
+                                        <div>
+                                            <span>2</span>
+                                        </div>
+                                        <p>Editing</p>
+                                    </div>
+                                    <div>
+                                        <div>
+                                            <span>3</span>
+                                        </div>
+                                        <p>Proof</p>
+                                    </div>
+                                    <div>
+                                        <div>
+                                            <span>4</span>
+                                        </div>
+                                        <p>Order Place</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="w-4/12 py-4 px-5 bg-[#FFFBF3] rounded-lg flex justify-between items-center gap-5">
+                                <div>
+                                    <h2 className="text-xl font-semibold mb-5">Upload logo</h2>
+                                    <p className="text-md text-[#8A8A8A]">Upload your logo here!</p>
+                                </div>
+                                <div className="relative">
+                                    <img src={uploadLogo} alt="" className="rounded-full" />
+                                    <label htmlFor="" className="rounded-full w-8 h-8 flex justify-center items-center bg-white shadow-lg bottom-1 right-1 absolute">
+                                        <AiOutlineCamera />
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="flex gap-8">
+                            <div className="w-5/12 shadow-lg rounded-lg p-6">
+                                <h2 className="text-xl font-semibold mb-4">Print Products</h2>
+                                <div className="rounded-lg">
+                                    <img src={catalog} alt="" className="rounded-t-xl" />
+                                    <div className="grid grid-cols-2">
+                                        <img src={catalog} alt="" className="w-auto rounded-bl-xl" />
+                                        <img src={catalog} alt="" className="w-auto rounded-br-xl" />
+                                    </div>
+                                </div>
+                                <div className="flex justify-center">
+                                    <button className="flex gap-3 text-md mt-4 items-center bg-[#FFD584] py-2 px-8 rounded">
+                                        <FaSearchPlus />
+                                        <span>Enlarge Image</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div className="w-7/12">
+                                <div className="bg-[#FFFBF3] px-5 py-14 rounded-lg">
+                                    <h2 className="text-lg font-semibold">Product Details</h2>
+                                    <hr className="my-4 border-[0.5px] border-[#D9D9D9]" />
+                                    <p className="text-sm font-medium text-[#595959]">Silver Matellic Name Badge</p>
+                                    <div className="mt-8">
+                                        <label htmlFor="" className="font-medium mb-1 block">Name</label>
+                                        <input type="text" className="w-full outline-none py-3 px-4 border-[1px] border-[#EAEAEA] bg-[#F9FAFB] rounded-lg" />
+                                    </div>
+                                    <div className="mt-5 pb-7">
+                                        <label htmlFor="" className="font-medium mb-1 block">Job Title</label>
+                                        <input type="text" className="w-full outline-none py-3 px-4 border-[1px] border-[#EAEAEA] bg-[#F9FAFB] rounded-lg" />
+                                    </div>
+                                </div>
+                                <div className="bg-[#FFFBF3] p-6 my-6">
+                                    <div className="flex justify-between items-center">
+                                        <h3 className="text-md font-semibold">Select Quantity </h3>
+                                        <div className="flex gap-4 items-center">
+                                            <button className="bg-[#FFD584] py-1 px-7">
+                                                <AiOutlineMinus className="text-lg" />
+                                            </button>
+                                            <span>900</span>
+                                            <button className="bg-[#FFD584] py-1 px-7">
+                                                <AiOutlinePlus className="text-lg" />
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="mt-5 flex gap-10 justify-end items-center">
+                                    <button className="text-[#055F5B] py-3 px-14 rounded-lg bg-[#055F5B1F] text-sm">Back</button>
+                                    <button className="text-[#FFFFFF] py-3 px-14 rounded-lg bg-[#055F5B] text-sm" onClick={() => {
+                                        setScreen("itemsDetails")
+                                        toast.success("Your request for the change have been submit to the admin. Thank You!")
+                                    }}>Submit</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </>
