@@ -16,6 +16,11 @@ import V1Settings from './pages/v1/V1Settings';
 import V1Accounts from './pages/v1/V1Accounts';
 import V1CurrentOrders from './pages/v1/V1CurrentOrders';
 import V1Collaterals from './pages/v1/V1Collaterals';
+import V2DahsboardLayout from './components/V2DashboardLayout';
+import V2Dashboard from './pages/v2/V2Dashboard';
+import V2Login from './pages/v2/V2Login';
+import V2Settings from './pages/v2/V2Settings';
+import V2NewOrders from './pages/v2/V2NewOrders';
 
 
 function App() {
@@ -77,6 +82,33 @@ function App() {
         {
           path: "/v1/dashboard/settings",
           element: <V1Settings />
+        },
+      ]
+    },
+    {
+      path: "/v2",
+      children: [
+        {
+          path: "/v2/login",
+          element: <V2Login />
+        }
+      ]
+    },
+    {
+      path: "/v2/dashboard",
+      element: <V2DahsboardLayout />,
+      children: [
+        {
+          path: "/v2/dashboard",
+          element: <V2Dashboard />
+        },
+        {
+          path: "/v2/dashboard/neworders",
+          element: <V2NewOrders />
+        },
+        {
+          path: "/v2/dashboard/settings",
+          element: <V2Settings />
         },
       ]
     }
