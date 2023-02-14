@@ -22,3 +22,98 @@
 .categoryWrapper>div>input:checked~label>span:nth-child(2) {
     visibility: visible;
 }
+
+
+/* Order Progress styles */
+.orderProgress {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    position: relative;
+}
+
+.orderProgress::before {
+    content: "";
+    width: 70%;
+    height: 0.5px;
+    border: 1px dashed #055F5B;
+    top: 38%;
+    left: 15%;
+    position: absolute;
+    z-index: 9;
+}
+
+.orderProgress20::after {
+    content: "";
+    width: 20%;
+    height: 0.5px;
+    border: 1px solid #055F5B;
+    top: 38%;
+    left: 15%;
+    position: absolute;
+    z-index: 9;
+}
+
+.orderProgress25::after {
+    content: "";
+    width: 30%;
+    height: 0.5px;
+    border: 1px solid #055F5B;
+    top: 38%;
+    left: 15%;
+    position: absolute;
+    z-index: 9;
+}
+
+.orderProgress50::after {
+    content: "";
+    width: 50%;
+    height: 0.5px;
+    border: 1px solid #055F5B;
+    top: 38%;
+    left: 15%;
+    position: absolute;
+    z-index: 9;
+}
+
+.orderProgress>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.orderProgress>div>div {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #FFF7E6;
+    border: 1px solid #055F5B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 999;
+}
+
+.orderProgress>div>div>span {
+    color: #055F5B;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.orderProgress>div>p {
+    font-weight: 400;
+}
+
+.orderProgressActive>div {
+    background: #FFD584 !important;
+}
+
+.orderProgressActive>div>span {
+    color: #000000 !important;
+}
+
+.orderProgressActive>p {
+    font-weight: 700 !important;
+}
